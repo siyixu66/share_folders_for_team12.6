@@ -123,7 +123,6 @@ DO WHILE(DJM <= DJM_1)
             CALL iau_JD2CAL(DJM0,DJM,YEAR,MONTH,DAY,DDAY,J)
             DDAY=DDAY-(32.184+37)*iteration_val
             CALL sla_DD2TF(NDP,DDAY,SIGN,IHMSF)!小数天数转为时分秒
-            WRITE(*,*)'theta',theta
             WRITE(*,*)'初亏时间：'
             WRITE(*,*)YEAR,'年',MONTH,'月',DAY,'日',IHMSF(1),':',IHMSF(2),':',IHMSF(3)+IHMSF(4)/1000.0  
             DJM=DJM+1
