@@ -14,3 +14,6 @@ compute.f是sofa程序库里关于时间转换的函数
 
 和NASA给出的时、分一致，NASA没有给出秒：https://eclipse.gsfc.nasa.gov/JLEX/JLEX-AS.html
 计算了2019年的月食，和紫金山天文台给出的初亏时间对比，时、分一致，秒不一样
+
+# 12.12
+添加了新的主程序main.f90,主要加入了顾及地月光行时的代码块，部分变量有改动
