@@ -94,16 +94,16 @@ DO WHILE(DJM <= DJM_1)
         !按照1s的迭代量，往后寻找月食初亏时刻   
     DO 
          !光行时迭代
-        dt0=0!初始光行时，单位为天
-        dt=NORM2(E2S)/CLIGHT/86400.0 !光行时，单位为天
+        dt=0!光行时，单位为天
+        dt0=NORM2(E2S)/CLIGHT/86400.0 !
 
         DO WHILE(ABS(dt0-dt)>light_time_diff)
+            dt0=dt
             B=11 !sun
             C=3  !earth
             CALL PLEPH(DJM0+DJM-dt0,B,C,PO)!太阳相对于地球的位置,单位为AU
             E2S=PO(1:3)
             dt=NORM2(E2S)/CLIGHT/86400.0 !光行时，单位为天
-            dt0=dt
         END DO
 
         E2O=RE*E2S/(RE-ASUN) !地心与影锥距离
