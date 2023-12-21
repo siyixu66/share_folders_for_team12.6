@@ -215,7 +215,20 @@ DO WHILE(DJM <= DJM_1)
         END IF
         DJM=DJM+iteration_val!儒略日+1s
 
-        IF(DJM>DJM_1) EXIT
+        !判断日地月夹角，如果小于175度则推出这层循环
+        B=11 !sun
+        C=3  !earth
+        CALL PLEPH(DJM0+DJM,B,C,PO)!太阳相对于地球的位置
+        E2S=PO(1:3)
+        B=10 !moon
+        CALL PLEPH(DJM0+DJM,B,C,PO)!月球相对于地球的位置
+        E2M=PO(1:3)
+        CALL iau_PDP(E2S,E2M,PRODUCT) !内积
+        theta=ACOS(PRODUCT/(NORM2(E2S)*NORM2(E2M))) !地月夹角,rad
+        
+        IF(theta<THRESHOLD) THEN EXIT
+
+        !IF(DJM>DJM_1) EXIT
 
     END DO
     END IF  
