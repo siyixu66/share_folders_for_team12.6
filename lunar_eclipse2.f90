@@ -226,7 +226,7 @@ DO WHILE(DJM <= DJM_1)
         CALL iau_PDP(E2S,E2M,PRODUCT) !内积
         theta=ACOS(PRODUCT/(NORM2(E2S)*NORM2(E2M))) !地月夹角,rad
         
-        IF(theta<THRESHOLD) THEN EXIT
+        IF(theta<THRESHOLD) EXIT
 
         !IF(DJM>DJM_1) EXIT
 
